@@ -5,6 +5,9 @@ Crie uma base de dados localmente para amarzenar os dados de EMPRESA e COLABORAD
 
 segue o script da criação das tabelas 
 
+
+
+-----------------------------------
 CREATE TABLE EMPRESA(
 	CODIGO_EMPRESA INT IDENTITY NOT NULL,
 	CNPJ VARCHAR NOT NULL,
@@ -13,6 +16,12 @@ CREATE TABLE EMPRESA(
 	ENDERECO VARCHAR  NOT NULL,
 	PRIMARY KEY (CODIGO_EMPRESA)
 )
+
+
+----------------------------------
+
+
+
 CREATE TABLE COLABORADOR(
 	CODIGO_COLABORADOR INT IDENTITY NOT NULL,
 	CPF VARCHAR NOT NULL,
