@@ -9,4 +9,6 @@ public interface EmpresaService {
 	List<Empresa> buscarEmpresas();
 
 	Empresa salvarEmpresa(Empresa empresa);
+
+	void deleteById(Integer id);
 }

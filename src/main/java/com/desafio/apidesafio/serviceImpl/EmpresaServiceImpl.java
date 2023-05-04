@@ -31,4 +31,9 @@ public class EmpresaServiceImpl implements EmpresaService {
 		return this.empresaRepository.saveAndFlush(empresa);
 	}
 
+	@Override
+	public void deleteById(Integer id) {
+		this.empresaRepository.deleteById(id);
+	}
+
 }

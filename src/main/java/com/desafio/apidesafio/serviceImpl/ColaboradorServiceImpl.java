@@ -40,6 +40,12 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 	public Colaborador salvarColaborador(ColaboradorDTO colaboradorDTO) {
 		Colaborador colaborador = this.modelMapper.map(colaboradorDTO, Colaborador.class);
 		return this.colaboradorRepository.save(colaborador);
+
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		this.colaboradorRepository.deleteById(id);
 	}
 
 }

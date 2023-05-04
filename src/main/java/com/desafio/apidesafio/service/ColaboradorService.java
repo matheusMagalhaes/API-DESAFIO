@@ -12,4 +12,6 @@ public interface ColaboradorService {
 	List<ColaboradorDTO> buscarPorIdEmpresa(Integer idEmpresa);
 
 	Colaborador salvarColaborador(ColaboradorDTO Colaborador);
+
+	void deleteById(Integer id);
 }

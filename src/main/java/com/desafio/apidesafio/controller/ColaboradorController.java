@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +41,11 @@ public class ColaboradorController {
 	@PostMapping("salvar")
 	public ResponseEntity<Colaborador> salvarColaborador(@RequestBody ColaboradorDTO colaboradorDTO) {
 		return ResponseEntity.ok(this.colaboradorService.salvarColaborador(colaboradorDTO));
+	}
+
+	@DeleteMapping("deletar/{id}")
+	public void deleteById(@PathVariable("id") Integer id) {
+		this.colaboradorService.deleteById(id);
 	}
 
 }
