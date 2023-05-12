@@ -15,8 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "COLABORADOR")
-public class Colaborador implements Serializable{
-
+public class Colaborador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,5 +42,9 @@ public class Colaborador implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "CODIGO_EMPRESA", referencedColumnName = "CODIGO_EMPRESA")
 	private Empresa empresa;
+
+	@ManyToOne
+	@JoinColumn(name = "CARGO_ID", referencedColumnName = "ID")
+	private Cargo cargo;
 
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -30,11 +32,8 @@ public class Empresa {
 	@Column(name = "TELEFONE")
 	private String telefone;
 
-	@Column(name = "ENDERECO")
-	private String endereco;
-
-	public Empresa() {
-		super();
-	}
+	@ManyToOne
+	@JoinColumn(name = "ENDERCO_ID", referencedColumnName = "ID")
+	private Endereco endereco;
 
 }
