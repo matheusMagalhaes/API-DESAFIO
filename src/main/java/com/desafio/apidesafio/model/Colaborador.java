@@ -21,7 +21,7 @@ public class Colaborador implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CODIGO_COLABORADOR")
+	@Column(name = "ID")
 	private Integer id;
 
 	@Column(name = "CPF")
@@ -40,11 +40,11 @@ public class Colaborador implements Serializable {
 	private String endereco;
 
 	@ManyToOne
-	@JoinColumn(name = "CODIGO_EMPRESA", referencedColumnName = "CODIGO_EMPRESA")
+	@JoinColumn(name = "ID_EMPRESA", referencedColumnName = "ID")
 	private Empresa empresa;
 
 	@ManyToOne
-	@JoinColumn(name = "CARGO_ID", referencedColumnName = "ID")
+	@JoinColumn(name = "ID_CARGO", referencedColumnName = "ID")
 	private Cargo cargo;
 
 }

@@ -17,7 +17,7 @@ public class Empresa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CODIGO_EMPRESA")
+	@Column(name = "ID")
 	private Integer id;
 
 	@Column(name = "NOME")
@@ -33,7 +33,7 @@ public class Empresa {
 	private String telefone;
 
 	@ManyToOne
-	@JoinColumn(name = "ENDERCO_ID", referencedColumnName = "ID")
+	@JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID")
 	private Endereco endereco;
 
 }
