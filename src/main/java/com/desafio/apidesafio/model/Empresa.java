@@ -1,5 +1,6 @@
 package com.desafio.apidesafio.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +33,7 @@ public class Empresa {
 	@Column(name = "TELEFONE")
 	private String telefone;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID")
 	private Endereco endereco;
 

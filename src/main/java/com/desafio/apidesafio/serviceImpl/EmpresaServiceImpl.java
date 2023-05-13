@@ -28,7 +28,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 	@Override
 	public Empresa salvarEmpresa(Empresa empresa) {
-		return this.empresaRepository.saveAndFlush(empresa);
+		return this.empresaRepository.save(empresa);
 	}
 
 	@Override

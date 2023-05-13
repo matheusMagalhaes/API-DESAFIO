@@ -25,6 +25,12 @@ public class Endereco implements Serializable {
 	@Column(name = "RUA")
 	private String rua;
 
+	@Column(name = "NUMERO")
+	private Integer numero;
+
+	@Column(name = "COMPLEMENTO")
+	private String complemento;
+
 	@Column(name = "BAIRRO")
 	private String bairro;
 
