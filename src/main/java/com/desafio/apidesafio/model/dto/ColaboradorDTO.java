@@ -1,6 +1,5 @@
 package com.desafio.apidesafio.model.dto;
 
-import com.desafio.apidesafio.model.Cargo;
 import com.desafio.apidesafio.model.Empresa;
 
 import lombok.Data;
@@ -20,7 +19,7 @@ public class ColaboradorDTO {
 
 	private Empresa empresa;
 
-	private Cargo cargo;
+	private String cargo;
 
 	public ColaboradorDTO(ColaboradorInterfaceDTO x) {
 		this.cpf = x.getCpf();
@@ -28,7 +27,7 @@ public class ColaboradorDTO {
 		this.email = x.getEmail();
 		this.telefone = x.getTelefone();
 		this.endereco = x.getEndereco();
-		this.cargo.setCargo(x.getCargo());
+		this.cargo = x.getCargo();
 		this.empresa.setNome(x.getNomeEmpresa());
 	}
 
