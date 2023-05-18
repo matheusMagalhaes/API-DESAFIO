@@ -7,7 +7,9 @@ import javax.management.RuntimeErrorException;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.desafio.apidesafio.model.Colaborador;
 import com.desafio.apidesafio.model.dto.ColaboradorDTO;
@@ -47,12 +49,13 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 
 		String cpf = colaboradorDTO.getCpf();
 		if (!this.validaCpf(cpf)) {
-			throw new RuntimeException("CPF Invalido!");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF Invalido!");
 		} else {
 			Colaborador colaborador = this.modelMapper.map(colaboradorDTO, Colaborador.class);
 			return this.colaboradorRepository.save(colaborador);
 
 		}
+
 	}
 
 	@Override
