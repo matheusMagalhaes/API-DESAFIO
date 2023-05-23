@@ -53,3 +53,7 @@ GO
 #
 
 Porém, é possível testar a aplicação fazendo as operações (CRUD) normalmente usando cache da propria JPA, portanto deixarei o arquivo de configuração Application.properties comentado.
+
+# 
+
+Para subir a API basta importar o projeto como Um 'Maven Project' dentro da IDE (Eclipse, STS ou InteliJ).
