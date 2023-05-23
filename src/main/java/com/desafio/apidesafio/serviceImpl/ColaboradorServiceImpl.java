@@ -53,9 +53,7 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 		} else {
 			Colaborador colaborador = this.modelMapper.map(colaboradorDTO, Colaborador.class);
 			return this.colaboradorRepository.save(colaborador);
-
 		}
-
 	}
 
 	@Override
