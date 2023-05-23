@@ -1,44 +1,55 @@
 # API-DESAFIO
+REST API em Java com Spring Boot framework e gerencimanro de dependencias Maven. 
+# 
 
-Minha solução para o desáfio foi desenvolver uma api-rest com um banco de dados relacional, utilizando a linguagem java e o framework spring boot.
-Crie uma base de dados localmente para amarzenar os dados de EMPRESA e COLABORADOR. Apos criar a base eu migrei para Azuere, ja que com a conta microsoft eu tive acesso ao portal da azuere.
+Mapeamento ORM das seguintes tabelas em SQL, utilizando JPA (Java Persitence API):
 
-segue o script da criação das tabelas 
-
-
-
------------------------------------
-CREATE TABLE EMPRESA(
-	CODIGO_EMPRESA INT IDENTITY NOT NULL,
-	CNPJ VARCHAR NOT NULL,
-	EMAIL VARCHAR NOT NULL,
-	TELEFONE VARCHAR NOT NULL,
-	ENDERECO VARCHAR  NOT NULL,
-	PRIMARY KEY (CODIGO_EMPRESA)
+CREATE TABLE ENDERECO(
+ID INT IDENTITY NOT NULL,
+CEP VARCHAR (255) NOT NULL,
+COMPLEMENTO VARCHAR(255) NOT NULL,
+RUA VARCHAR(255) NOT NULL,
+BAIRRO VARCHAR(255) NOT NULL, 
+CIDADE VARCHAR (255) NOT NULL,
+UF VARCHAR(255) NOT NULL,
+PRIMARY KEY CLUSTERED (ID)
 )
+----------------------------------- 
 
-
-----------------------------------
-
-
+CREATE TABLE EMPRESA(
+	ID INT IDENTITY NOT NULL,
+	CNPJ VARCHAR(255)  NOT NULL,
+	EMAIL VARCHAR(255)  NOT NULL,
+	TELEFONE VARCHAR(255)  NOT NULL,
+	ENDERECO_ID INT  NOT NULL,
+	PRIMARY KEY CLUSTERED (ID),
+	FOREIGN KEY (ENDERECO_ID) REFERENCES ENDERECO(ID)
+)
+----------------------------------- 
 
 CREATE TABLE COLABORADOR(
-	CODIGO_COLABORADOR INT IDENTITY NOT NULL,
-	CPF VARCHAR NOT NULL,
-	NOME VARCHAR NOT NULL,
-	EMAIL VARCHAR NOT NULL,
-	TELEFONE VARCHAR NOT NULL,
-	ENDERECO VARCHAR NOT NULL,
-	CODIGO_EMPRESA INT NOT NULL,
-	FOREIGN KEY (CODIGO_EMPRESA) REFERENCES EMPRESA(CODIGO_EMPRESA)
+	ID INT IDENTITY NOT NULL,
+	CPF VARCHAR(255)  NOT NULL,
+	NOME VARCHAR(255)  NOT NULL,
+	EMAIL VARCHAR(255)  NOT NULL,
+	TELEFONE VARCHAR(255)  NOT NULL,
+	ENDERECO VARCHAR(255)  NOT NULL,
+	ID_EMPRESA INT NOT NULL,
+	CARGO VARCHAR(255) NOT NULL,
+	PRIMARY KEY CLUSTERED (ID),
+	FOREIGN KEY (ID_EMPRESA) REFERENCES EMPRESA(ID),
 )
+----------------------------------- 
 
+o Script da tabela acim é para fins de teste, caso necessário verificar se de fato esta salvando no banco de dados. 
+A API esta configurado para conectar no banco de dados do SQL Server via localhost, se for o caso de testar com a conexão do banco, crir o usuario  para a api com o seguinte scrpit, aplicação ja está configurada para receber este mesmo usuário.  
 
-para acessar o banco de dados, basta entrar no sql server management studio e colocar o nome do server desafio-server.database.windows.net e colocar a
-opção de SQL Server authentication.  
-o login e a senha do servido encontram se no arquivo application.properties da api.
+CREATE LOGIN api_desafio   
+    WITH PASSWORD = '340$Uuxwp7Mcxo7Khy';  
 
-para inicializar a api, basta clonar para a maquina e abrir com um pojeto maven dentro do eclipse, sts ou intelij. 
+CREATE USER api_desafio FOR LOGIN api_desafio;  
+GO
 
+#
 
-
+Porém, é possível testar a aplicação fazendo as operações (CRUD) normalmente usando cache da propria JPA, portanto deixarei o arquivo de configuração Application.properties comentado.
