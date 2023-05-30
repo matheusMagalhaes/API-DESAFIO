@@ -1,6 +1,7 @@
 package com.desafio.apidesafio.model.dto;
 
 import com.desafio.apidesafio.model.Empresa;
+import com.desafio.apidesafio.model.Endereco;
 
 import lombok.Data;
 
@@ -15,7 +16,7 @@ public class ColaboradorDTO {
 
 	private String telefone;
 
-	private String endereco;
+	private Endereco endereco;
 
 	private Empresa empresa;
 
@@ -26,7 +27,7 @@ public class ColaboradorDTO {
 		this.nome = x.getNome();
 		this.email = x.getEmail();
 		this.telefone = x.getTelefone();
-		this.endereco = x.getEndereco();
+		this.endereco.setRua(x.getRua());
 		this.cargo = x.getCargo();
 		this.empresa.setNome(x.getNomeEmpresa());
 	}
@@ -47,6 +48,8 @@ public class ColaboradorDTO {
 		String getEndereco();
 
 		String getNomeEmpresa();
+
+		String getRua();
 
 		String getCargo();
 	}

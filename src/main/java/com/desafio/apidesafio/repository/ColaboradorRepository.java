@@ -12,7 +12,7 @@ import com.desafio.apidesafio.model.dto.ColaboradorDTO.ColaboradorInterfaceDTO;
 
 @Repository
 public interface ColaboradorRepository extends JpaRepository<Colaborador, Integer> {
-	@Query(value = "SELECT  A.CPF AS cpf,A.NOME AS nome, A.EMAIL AS email, A.TELEFONE AS telefone, A.ENDERECO AS endereco, B.NOME AS nomeEmpresa, A.CARGO AS cargo FROM COLABORADOR AS A  JOIN EMPRESA AS B ON A.CODIGO_EMPRESA  = B.CODIGO_EMPRESA WHERE A.CODIGO_EMPRESA =:idEmpresa", nativeQuery = true)
+	@Query(value = "SELECT A.cpf AS cpf, A.nome AS nome, A.email AS email, A.telefone AS telefone, E.RUA AS rua, B.nome AS nomeEmpresa, A.cargo AS cargo FROM colaborador AS A JOIN empresa AS B ON A.ID_EMPRESA = B.ID JOIN ENDERECO AS E ON A.ENDERECO_ID = E.ID WHERE  A.ID_EMPRESA = :idEmpresa", nativeQuery = true)
 	List<ColaboradorInterfaceDTO> buscarPorIdEmpresa(@Param("idEmpresa") Integer idEmpresa);
 
 }
