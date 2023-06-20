@@ -1,8 +1,8 @@
-package com.desafio.apidesafio.serviceImpl;		
+package com.desafio.apidesafio.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +34,20 @@ public class EmpresaServiceImpl implements EmpresaService {
 	@Override
 	public void deleteById(Integer id) {
 		this.empresaRepository.deleteById(id);
+	}
+
+	@Override
+	public void updateEmpresa(Empresa empresa) {
+		List<Empresa> listaEmpresa = new ArrayList<>();
+		for (Empresa emp : listaEmpresa) {
+			if (empresa.getId() == emp.getId()) {
+				emp.setNome(empresa.getNome());
+				emp.setCnpj(empresa.getEmail());
+				emp.setEmail(empresa.getEmail());
+				emp.setTelefone(empresa.getTelefone());
+				emp.setEndereco(empresa.getEndereco());
+			}
+		}
 	}
 
 }

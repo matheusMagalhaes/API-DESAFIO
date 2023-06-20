@@ -11,4 +11,7 @@ public interface EmpresaService {
 	Empresa salvarEmpresa(Empresa empresa);
 
 	void deleteById(Integer id);
+
+	void updateEmpresa(Empresa empresa);
+
 }
