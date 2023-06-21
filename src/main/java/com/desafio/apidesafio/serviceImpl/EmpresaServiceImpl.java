@@ -39,6 +39,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	@Override
 	public void updateEmpresa(Empresa empresa) {
 		List<Empresa> listaEmpresa = new ArrayList<>();
+		listaEmpresa = this.empresaRepository.buscarEmpresaPorId(empresa.getId());
 		for (Empresa emp : listaEmpresa) {
 			if (empresa.getId() == emp.getId()) {
 				emp.setNome(empresa.getNome());
