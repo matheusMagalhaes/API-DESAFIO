@@ -43,12 +43,14 @@ public class EmpresaServiceImpl implements EmpresaService {
 		for (Empresa emp : listaEmpresa) {
 			if (empresa.getId() == emp.getId()) {
 				emp.setNome(empresa.getNome());
-				emp.setCnpj(empresa.getEmail());
+				emp.setCnpj(empresa.getCnpj());
 				emp.setEmail(empresa.getEmail());
 				emp.setTelefone(empresa.getTelefone());
 				emp.setEndereco(empresa.getEndereco());
+				this.empresaRepository.save(emp);
 			}
 		}
+
 	}
 
 }
