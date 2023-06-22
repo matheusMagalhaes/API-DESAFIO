@@ -46,7 +46,6 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 
 	@Override
 	public Colaborador salvarColaborador(ColaboradorDTO colaboradorDTO) {
-
 		String cpf = colaboradorDTO.getCpf();
 		if (!this.validaCpf(cpf)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF Invalido!");
@@ -62,7 +61,6 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 	}
 
 	public Boolean validaCpf(String cpf) {
-
 		CPFValidator cpfValidator = new CPFValidator();
 		List<ValidationMessage> errorMsg = cpfValidator.invalidMessagesFor(cpf);
 		if (errorMsg.size() > 0) {
@@ -70,7 +68,6 @@ public class ColaboradorServiceImpl implements ColaboradorService {
 		} else {
 			return true;
 		}
-
 	}
 
 }

@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.desafio.apidesafio.model.Empresa;
+import com.desafio.apidesafio.model.dto.ColaboradorDTO;
 import com.desafio.apidesafio.repository.EmpresaRepository;
+import com.desafio.apidesafio.service.ColaboradorService;
 import com.desafio.apidesafio.service.EmpresaService;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +25,9 @@ public class EmpresaServiceImpl implements EmpresaService {
 	@Autowired
 	private EmpresaRepository empresaRepository;
 
+	@Autowired
+	ColaboradorService colaboradorService;
+
 	@Override
 	public List<Empresa> buscarEmpresas() {
 		return this.empresaRepository.findAll();
@@ -33,7 +40,14 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 	@Override
 	public void deleteById(Integer id) {
-		this.empresaRepository.deleteById(id);
+		List<ColaboradorDTO> colaborador = this.colaboradorService.buscarPorIdEmpresa(id);
+		if (!colaborador.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"Existem colaboradores cadastrados nesta empresa");
+		} else {
+			this.empresaRepository.deleteById(id);
+		}
+
 	}
 
 	@Override

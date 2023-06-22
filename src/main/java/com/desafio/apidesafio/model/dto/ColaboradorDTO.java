@@ -16,9 +16,9 @@ public class ColaboradorDTO {
 
 	private String telefone;
 
-	private Endereco endereco;
+	private Endereco endereco = new Endereco();
 
-	private Empresa empresa;
+	private Empresa empresa = new Empresa();
 
 	private String cargo;
 
