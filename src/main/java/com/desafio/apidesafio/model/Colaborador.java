@@ -37,7 +37,7 @@ public class Colaborador implements Serializable {
 	@Column(name = "TELEFONE")
 	private String telefone;
 
-	@ManyToOne(cascade = { CascadeType.ALL })
+	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID")
 	private Endereco endereco;
 
