@@ -42,7 +42,7 @@ public class Colaborador implements Serializable {
 	private Endereco endereco;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_EMPRESA", referencedColumnName = "ID")
+	@JoinColumn(name = "EMPRESA_ID", referencedColumnName = "ID")
 	private Empresa empresa;
 
 	@Column(name = "CARGO")
