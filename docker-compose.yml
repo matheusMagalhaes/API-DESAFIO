@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api_desafio:
+    build:
+      dockerfile: ./dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - spring.datasource.url=jdbc:sqlserver://db:1433;database=DESAFIO_DATABASE;encrypt=true;trustServerCertificate=true;
+      - spring.datasource.username=sa
+      - spring.datasource.password=yourStrong(!)Password
+    depends_on:
+      - db
+  db:
+    image: mcr.microsoft.com/mssql/server
+    volumes:
+      - ./db_data/db_data:/init.sql
+    hostname: db
+    environment:
+      SA_PASSWORD: "yourStrong(!)Password"
+      ACCEPT_EULA: Y
+      MSSQL_PID: "Express"
+    ports:
+      - "1434:1433"
+
+
